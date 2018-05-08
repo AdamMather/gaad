@@ -1,3 +1,44 @@
-<p>
-  store works!
-</p>
+<div class="container">
+  <span id="status" tabindex="0" class="sr-only sr-only-focusable"></span>
+<!-- Content here -->
+<div class="bg-primary">
+  <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
+  <h2 class="display-2 small text-white">ATOS DEUX</h2>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <div>
+      <span>
+        <!--
+        breadcrumb > breadcrumb > breadcrumb > breadcrumb
+        -->
+      </span>
+    </div>
+    <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
+      <div>
+        <h1>Product Range</h1>
+        <ul>
+          <li *ngFor="let record of global.products">
+            <img src="{{record.productImage.src}}" alt="{{record.productImage.shortDesc}}" width="{{record.productImage.width}}" height="{{record.productImage.height}}">
+            <button type="button" class="btn btn-primary" routerLink="/store/{{record._id}}" routerLinkActive="active">
+              <span class="glyphicon glyphicon-buy"></span> View Item
+            </button>
+          </li>
+        </ul>
+      </div>
+    </form>
+
+  </div>
+  <div class="col-sm-4 bg-light">
+    <div *ngIf="this.global.basketCost">
+      <h1>Basket</h1>
+      <ul>
+        <li *ngFor="let item of global.basket">
+          <span>{{ item.productName }} - £{{ item.quantityCost }}</span>
+        </li>
+      </ul>
+      <a routerLink="/basket" routerLinkActive="active">Basket</a>
+    </div>
+  </div>
+</div>
+</div>

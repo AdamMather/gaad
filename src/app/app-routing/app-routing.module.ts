@@ -5,8 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 //Components
 import { StoreComponent } from './../store/store.component';
 
+// Resolve
+import { ProductsResolve } from '../shared/resolve/products.resolve.service';
+
 const routes: Routes = [
-  { path: '', component: StoreComponent }
+  { path: '', component: StoreComponent, resolve: { products: ProductsResolve } }
 ];
 
 @NgModule({
