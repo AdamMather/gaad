@@ -1,0 +1,322 @@
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<div id="content" class="container">
+  <!-- Content here -->
+  <main>
+    <div class="bg-primary">
+      <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
+      <h2 class="display-2 small text-white">ATOS DEUX</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+
+        <div id="accordion" class="accordion">
+          <div class="card mb-0">
+            <a class="card-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" role="button" aria-expanded="false"
+              aria-controls="collapseOne">
+              Contact
+            </a>
+            <div id="collapseOne" class="card-body collapse" data-parent="#accordion">
+              <div class="card-body">
+                <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+                  <fieldset class="form-group">
+
+                    <label for="contactPoint">Email Address *</label>
+                    <input type="text" class="form-control" id="contactPoint" placeholder="Please enter an email address" name="contactPoint"
+                      aria-describedby="contactPoint_desc" aria-required="true" pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+                      [(ngModel)]="contact.contactPoint" #contactPoint="ngModel" required>
+                    <span id="contactPoint_desc" class="hidden" aria-live="assertive">Example email address would be contact@domain.com</span>
+
+                    <input type="checkbox" id="newsAndOffers" name="newsAndOffers" value="" [(ngModel)]="contact.newsAndOffers" #newsAndOffers="ngModel">
+                    <label for="newsAndOffers">Keep me up to date on news and exclusive offers</label>
+
+                  </fieldset>
+
+                  <div *ngIf="!contactForm.form.pristine && !contactForm.form.valid">
+                    <div *ngIf="contactPoint.errors && (contactPoint.dirty || contactPoint.touched)">
+                      <div id="errMsg_cpReq" [hidden]="!contactPoint.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('contactPoint')">A contact email address or telephone number is required!</a>
+                      </div>
+                      <div id="errMsg_cpInv" [hidden]="!contactPoint.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('contactPoint')">The contact detail is invalid!</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-success" aria-disabled="!contactForm.form.valid" [disabled]="!contactForm.form.valid">Submit</button>
+                </form>
+              </div>
+            </div>
+            <a class="card-title" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" role="button" aria-expanded="false"
+              aria-controls="collapseTwo">
+              Shipment
+            </a>
+            <div id="collapseTwo" class="card-body collapse" data-parent="#accordion">
+              <div class="card-body">
+                <form #shippingForm="ngForm" (ngSubmit)="onSubmit(shippingForm)" novalidate>
+                  <fieldset class="form-group">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" minlength="3" maxlength="30" placeholder="Please enter the first name"
+                          aria-required="true" [(ngModel)]="address.firstName" #firstName="ngModel" required>
+                      </div>
+                      <!-- // col-sm-6 -->
+                      <div class="col-sm-6">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" minlength="3" maxlength="30" placeholder="Please enter the last name"
+                          aria-required="true" [(ngModel)]="address.lastName" #lastName="ngModel" required>
+                      </div>
+                      <!-- // col-sm-6 -->
+                    </div>
+                    <!-- // row -->
+
+                    <label for="ship_addrLine1">Address Line 1 *</label>
+                    <input type="text" class="form-control" id="ship_addrLine1" name="ship_addrLine1" placeholder="Please enter the first line of the contact main address"
+                      (focus)="loadAddressInfo('SHIP', shipAddressElementRef, firstName.value, lastName.value)" autocorrect="off"
+                      autocapitalize="off" spellcheck="off" aria-required="true" [(ngModel)]="address.addrLine1" #shipAddrLine1
+                      [formControl]="addressControl" required>
+
+                    <label for="ship_addrLine2">Address Line 2 *</label>
+                    <input type="text" class="form-control" id="ship_addrLine2" name="ship_addrLine2" placeholder="Please enter the second line of the contact main address"
+                      [(ngModel)]="address.addrLine2" #shipAddrLine2="ngModel">
+
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <label for="ship_city">Town / City *</label>
+                        <input type="text" class="form-control" id="ship_city" name="ship_city" placeholder="Please enter the town or city of the contact main address"
+                          aria-required="true" [(ngModel)]="address.city" #shipCity="ngModel" required>
+                      </div>
+                      <!-- // col-sm-6 -->
+                      <div class="col-sm-6">
+                        <label for="ship_postcode">Post Code *</label>
+                        <input type="text" class="form-control" id="ship_postcode" name="ship_postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
+                          pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
+                          aria-describedby="postcode_desc" aria-required="true" [(ngModel)]="address.postcode" #shipPostcode="ngModel"
+                          required>
+                        <span id="postcode_desc" class="hidden" aria-live="assertive">example format required: xxx xxx, xxxx xxx</span>
+                      </div>
+                      <!-- // col-sm-6 -->
+                    </div>
+                    <!-- // row -->
+
+                    <input type="checkbox" id="ship_saveAddressInfo" name="ship_saveAddressInfo" value="" [(ngModel)]="address.save" #shipSaveAddressInfo="ngModel">
+                    <label for="shipSaveAddressInfo">Save this information for next time</label>
+
+                  </fieldset>
+
+                  <div *ngIf="!shippingForm.form.pristine && !shippingForm.form.valid">
+                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                      <div id="errMsg_fnReq" [hidden]="!firstName.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('firstName')">The contact first name is required!</a>
+                      </div>
+                      <div id="errMsg_fnMinLgt" [hidden]="!firstName.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('firstName')">The contact first name must be at least 3 characters long.</a>
+                      </div>
+                      <div id="errMsg_fnMaxLgt" [hidden]="!firstName.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('firstName')">The contact first name cannot be more than 30 characters long.</a>
+                      </div>
+                    </div>
+                    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                      <div id="errMsg_lnReq" [hidden]="!lastName.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('lastName')">The contact last name is required!</a>
+                      </div>
+                      <div id="errMsg_lnMinLgt" [hidden]="!lastName.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('lastName')">The contact last name must be at least 3 characters long.</a>
+                      </div>
+                      <div id="errMsg_lnMinLgt" [hidden]="!lastName.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('lastName')">The contact last name cannot be more than 30 characters long.</a>
+                      </div>
+                    </div>
+                    <div *ngIf="shipAddrLine1.errors && (shipAddrLine1.dirty || shipAddrLine1.touched)">
+                      <div id="errMsg_a1Req" [hidden]="!shipAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('ship_addrLine1')">The first line of the contact main address is required!</a>
+                      </div>
+                    </div>
+                    <div *ngIf="shipCity.errors && (shipCity.dirty || shipCity.touched)">
+                      <div id="errMsg_ctReq" [hidden]="!shipCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('ship_city')">The town or city of the contact main address is required!</a>
+                      </div>
+                    </div>
+                    <div *ngIf="shipPostcode.errors && (shipPostcode.dirty || shipPostcode.touched)">
+                      <div id="errMsg_pcReq" [hidden]="!shipPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('ship_postcode')">The postcode of the contact main address is required!</a>
+                      </div>
+                      <div id="errMsg_pcInv" [hidden]="!shipPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-success" aria-disabled="!shippingForm.form.valid" [disabled]="!shippingForm.form.valid">Submit</button>
+                </form>
+              </div>
+            </div>
+            <a class="card-title" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" role="button" aria-expanded="false"
+              aria-controls="collapseThree">
+              Payment
+            </a>
+            <div id="collapseThree" class="collapse" data-parent="#accordion">
+              <div class="card-body">
+                <form #shipmentForm="ngForm" (ngSubmit)="onSubmit(shipmentForm)" novalidate>
+                  <fieldset class="form-group">
+
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" tabindex="0" data-toggle="collapse" data-target="#card">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">Credit Card</span>
+                    </label>
+                    <div id="card" class="collapse">
+                      <label for="cardnumber">Card Number *</label>
+                      <input type="text" class="form-control" id="cardnumber" name="cardnumber" maxlength="16" placeholder="Card number" pattern="((?:(?:4\d{3})|(?:5[1-5]\d{2})|6(?:011|5[0-9]{2}))(?:-?|\040?)(?:\d{4}(?:-?|\040?)){3}|(?:3[4,7]\d{2})(?:-?|\040?)\d{6}(?:-?|\040?)\d{5})"
+                        aria-describedby="cardnumber_desc" aria-required="true" [(ngModel)]="payment.cardnumber" #cardnumber="ngModel"
+                        required>
+                      <span id="cardnumber_desc" class="hidden" aria-live="assertive">example format required: 1234-5678-9123-4567</span>
+
+                      <div class="row">
+                        <div class="col-sm-6">
+
+                          <label for="cardholdername">Cardholder Name *</label>
+                          <input type="text" class="form-control" id="cardholdername" name="cardholdername" minlength="3" maxlength="30" placeholder="Cardholder name"
+                            aria-required="true" [(ngModel)]="payment.name" #cardholdername="ngModel" required>
+
+                        </div>
+                        <div class="col-sm-3">
+
+                          <label for="expiry">Exp *</label>
+                          <input type="text" class="form-control" id="expiry" name="expiry" maxlength="5" (keyup)="expInsert(payment, expiry.value)"
+                            placeholder="MM / YY" pattern="^((0[1-9])|(1[0-2]))[\/\.\-]*((1[8-9])|([2][0-9]))$" aria-required="true"
+                            [(ngModel)]="payment.expiry" #expiry="ngModel" required>
+
+                        </div>
+                        <div class="col-sm-3">
+
+                          <label for="expiry">CVV *</label>
+                          <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" maxlength="4" pattern="^[0-9]{3,4}$" aria-required="true"
+                            [(ngModel)]="payment.cvv" #cvv="ngModel" required>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <div *ngIf="!shipmentForm.form.pristine && !shipmentForm.form.valid">
+                    <div *ngIf="cardnumber.errors && (cardnumber.dirty || cardnumber.touched)">
+                      <div id="errMsg_cnReq" [hidden]="!cardnumber.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cardnumber')">The bank card number is required!</a>
+                      </div>
+                      <div id="errMsg_cnInv" [hidden]="!cardnumber.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cardnumber')">The bank card number is invalid!</a>
+                      </div>
+                    </div>
+
+                    <div *ngIf="cardholdername.errors && (cardholdername.dirty || cardholdername.touched)">
+                      <div id="errMsg_rnReq" [hidden]="!cardholdername.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cardholdername')">The registered cardholder name is required!</a>
+                      </div>
+                      <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cardholdername')">The registered cardholder name must be at least 3 characters long.</a>
+                      </div>
+                      <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cardholdername')">The registered cardholder name cannot be more than 30 characters long.</a>
+                      </div>
+                    </div>
+
+                    <div *ngIf="expiry.errors && (expiry.dirty || expiry.touched)">
+                      <div id="errMsg_expReq" [hidden]="!expiry.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('expiry')">The bank card expiry date is required!</a>
+                      </div>
+                      <div id="errMsg_expInv" [hidden]="!expiry.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('expiry')">The bank card expiry date is invalid!</a>
+                      </div>
+                    </div>
+
+                    <div *ngIf="cvv.errors && (cvv.dirty || cvv.touched)">
+                      <div id="errMsg_cvvReq" [hidden]="!cvv.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cvv')">The bank card expiry cvv number is required!</a>
+                      </div>
+                      <div id="errMsg_cvvInv" [hidden]="!cvv.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('cvv')">The bank card expiry cvv number is invalid!</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <fieldset class="form-group">
+                    <!-- // card payment -->
+                    <a href="https://www.paypal.com/signin?returnUri=https%3A%2F%2Fwww.paypal.com%2Fmyaccount&state=%2F">
+                      <img id="paypal" src="https://icount.co.uk/wp-content/uploads/paypal-784404_1280.png" alt="PayPal" width="20%" height="20%">
+                    </a>
+                  </fieldset>
+
+                </form>
+              </div>
+            </div>
+            <a class="card-title" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" role="button" aria-expanded="false"
+              aria-controls="collapseFour">
+              Billing Address
+            </a>
+            <div id="collapseFour" class="collapse" data-parent="#accordion">
+              <div class="card-body">
+                <form #billingForm="ngForm" (ngSubmit)="onSubmit(billingForm)" novalidate>
+                  <fieldset class="form-group">
+                    <label for="bill_addrLine1">Address Line 1 *</label>
+                    <input type="text" class="form-control" id="bill_addrLine1" name="bill_addrLine1" placeholder="Please enter the first line of the contact main address"
+                      (focus)="loadAddressInfo('BILL', billAddressElementRef)" autocorrect="off" autocapitalize="off" spellcheck="off"
+                      aria-required="true" [(ngModel)]="address.addrLine1" #billAddrLine1 [formControl]="addressControl" required>
+
+                    <label for="bill_addrLine2">Address Line 2 *</label>
+                    <input type="text" class="form-control" id="bill_addrLine2" name="bill_addrLine2" placeholder="Please enter the second line of the contact main address"
+                      [(ngModel)]="address.addrLine2" #billAddrLine2="ngModel">
+
+                    <div class="row">
+                      <div class="col-sm-6">
+
+                        <label for="bill_city">Town / City *</label>
+                        <input type="text" class="form-control" id="bill_city" name="bill_city" placeholder="Please enter the town or city of the contact main address"
+                          aria-required="true" [(ngModel)]="address.city" #billCity="ngModel" required>
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="bill_postcode">Post Code *</label>
+                        <input type="text" class="form-control" id="bill_postcode" name="bill_postcode" maxlength="8" placeholder="Please enter the postcode of the contact main address"
+                          pattern="^([A-PR-UWYZ0-9][A-HK-Y0-9][AEHMNPRTVXY0-9]?[ABEHMNPRVWXY0-9]? {1,2}[0-9][ABD-HJLN-UW-Z]{2}|GIR 0AA)$"
+                          aria-describedby="postcode_desc" aria-required="true" [(ngModel)]="address.postcode" #billPostcode="ngModel"
+                          required>
+                        <span id="postcode_desc" class="hidden" aria-live="assertive">example format required: xxx xxx, xxxx xxx</span>
+                      </div>
+                    </div>
+
+                    <input type="checkbox" id="bill_saveAddressInfo" name="bill_saveAddressInfo" value="" [(ngModel)]="address.save" #billSaveAddressInfo="ngModel">
+                    <label for="billSaveAddressInfo">Save this information for next time</label>
+
+
+                    <button type="submit" class="btn btn-success" aria-disabled="!billingForm.form.valid" [disabled]="!billingForm.form.valid">Submit</button>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+        <a routerLink="/confirmation" routerLinkActive="active">Confirmation</a>
+      </div>
+      <div class="col-sm-4 bg-light">
+        <section aria-label="Use Alt+I to fetch the contents of the basket">
+          <div *ngIf="global.basketCost">
+            <h1>Basket</h1>
+            <ul>
+              <li *ngFor="let item of global.basket">
+                <span>{{ item.productName }} - £{{ item.quantityCost }}</span>
+              </li>
+            </ul>
+            <p>
+              Basket Cost: £{{ global.basketCost }}
+              <br /> Shipping Cost: £{{ global.shippingCost }}
+              <br /> Total Cost: £{{ global.basketCost+global.shippingCost }}
+              <br />
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

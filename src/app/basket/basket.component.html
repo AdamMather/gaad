@@ -1,3 +1,88 @@
-<p>
-  basket works!
-</p>
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<div id="content" class="container">
+  <!-- Content here -->
+  <main>
+    <span id="status" tabindex="0" class="sr-only sr-only-focusable"></span>
+    <div class="row">
+      <div class="col-sm-12 col-md-10 col-md-offset-1">
+        <table *ngIf="this.global.basketCost != 0" class="timetable_sub">
+          <thead>
+            <tr>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of global.basket" class="rem1">
+              <td class="invert-image">
+                <img src="{{ item.productImage.src }}" alt="{{ item.productImage.shortDesc }}" width="{{ item.productImage.width }}" height="{{ item.productImage.height }}">
+              </td>
+              <td class="invert">
+                <div class="quantity">
+                  <span [id]=createId(item._id) aria-live="assertive" class="hidden">You now have {{item.quantity}} of {{item.productName}} in the basket. The quantity cost for this item is
+                    {{item.quantityCost }} pounds.</span>
+                  <div class="quantity-select">
+                    <div class="entry value-minus" id="increment-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, false)"
+                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                    <div class="entry value">
+                      <span>{{ item.quantity }}</span>
+                    </div>
+                    <div class="entry value-plus active" id="decrement-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, true)"
+                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                  </div>
+                </div>
+              </td>
+              <td class="invert">{{ item.productName }}</td>
+
+              <td class="invert">{{ item.quantityCost }}</td>
+              <td class="invert">
+                <div class="rem">
+                  <div class="close1">
+                    <button type="button" class="btn btn-danger" (click)="removeProductItem(item)">
+                      <span class="glyphicon glyphicon-remove"></span> Remove
+                    </button>
+                  </div>
+                </div>
+
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="rem1" *ngIf="this.global.basketCost != 0">
+              <td class="invert-image">&nbsp;</td>
+              <td class="invert">&nbsp;</td>
+              <td class="invert">&nbsp;</td>
+              <td class="invert">
+                <h5>Subtotal</h5>
+                <h5>Estimated shipping</h5>
+                <h3>Total</h3>
+              </td>
+              <td class="invert text-right">
+                <h5>£{{ global.basketCost }}</h5>
+                <h5>£{{ global.shippingCost }}</h5>
+                <h3>£{{ global.basketCost+global.shippingCost }}</h3>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <div *ngIf="this.global.basketCost == 0">
+          <h1>Shopping Basket Empty</h1>
+        </div>
+        <div>
+          <button type="button" class="btn btn-default" routerLink="/">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+          </button>
+          <span *ngIf="this.global.basketCost != 0">
+            <button type="button" class="btn btn-success" routerLink="/checkout">
+              Checkout
+              <span class="glyphicon glyphicon-play"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { Global } from './../core/global.model';
 
 @Component({
   selector: 'app-confirmation',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private global: Global,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+
+    // store current url path
+    this.global.path = this.router.url;
+
   }
 
 }

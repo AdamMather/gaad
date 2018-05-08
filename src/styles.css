@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+.hidden {
+    display: none;
+}
+
+a:focus {
+    font-size: larger;
+}
+
+button:dropdown-border {
+    border: 2px solid red;
+}
+
+.header {
+    background: rgb(20, 125, 211);
+}
+
+.bg-light {
+    background: rgb(232, 234, 236);
+}

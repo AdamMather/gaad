@@ -1,3 +1,24 @@
-<p>
-  confirmation works!
-</p>
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<div id="content" class="container">
+  <!-- Content here -->
+  <main>
+    <div class="bg-primary">
+      <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
+      <h2 class="display-2 small text-white">ATOS DEUX</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <p class="display-3_">
+          Hello {{ global.shipping.firstName }},
+          <br /> Your payment has gone through successfully and your order is being processed.
+        </p>
+        <p class="display-3_">
+          Here are your shipping details:-
+          <br /> {{ global.shipping.addrLine1 }}, {{ global.shipping.addrLine2 }}, {{ global.shipping.city }}, {{ global.shipping.postcode
+          }}
+        </p>
+      </div>
+      <div class="col-sm-4 bg-light">&nbsp;</div>
+    </div>
+  </main>
+</div>

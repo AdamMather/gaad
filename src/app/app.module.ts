@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { StoreComponent } from './store/store.component';
 import { ProductComponent } from './product/product.component';
 import { BasketComponent } from './basket/basket.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 // Core Model
@@ -21,18 +22,23 @@ import { ProductsService } from './shared/service/products.service';
 // Core Resolve
 import { ProductsResolve } from './shared/resolve/products.resolve.service';
 
+const googleMapsParams = {
+  apiKey: 'AIzaSyDK8zuVo2bqA-K2PX08tcZUQgFmY5-fTHg',
+  libraries: ["places"],
+  region: 'UK'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
     StoreComponent,
     ProductComponent,
     BasketComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    CheckoutComponent
   ],
   imports: [
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDK8zuVo2bqA-K2PX08tcZUQgFmY5-fTHg'
-    }),
+    AgmCoreModule.forRoot(googleMapsParams),
     BrowserModule,
     AppRoutingModule,
     HttpModule,

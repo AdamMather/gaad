@@ -1,3 +1,81 @@
-<p>
-  product works!
-</p>
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<div id="content" class="container">
+  <!-- Content here -->
+  <main>
+    <span id="status" tabindex="0" class="sr-only sr-only-focusable"></span>
+    <div class="bg-primary">
+      <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
+      <h2 class="display-2 small text-white">ATOS DEUX</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div>
+          <span>
+            <!--
+        breadcrumb > breadcrumb > breadcrumb > breadcrumb
+        -->
+          </span>
+        </div>
+        <form #newForm="ngForm" (ngSubmit)="onSubmit(newForm)" novalidate>
+          <div>
+            <h1>Product Detail</h1>
+            <div class="row">
+              <div class="col-sm-6">
+                <img src="{{item.productImage.src}}" alt="{{item.productImage.shortDesc}}" width="{{item.productImage.width}}" height="{{item.productImage.height}}">
+              </div>
+              <div class="col-sm-6">
+                <label for="Id">Waist:</label>
+                <span id="waist_desc" tabindex="0" class="sr-only">please select the waist size</span>
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="waist_desc" [(ngModel)]="waistValue"
+                  [ngModelOptions]="{standalone: true}" #waist>
+                  <option selected="" value=""></option>
+                  <option [ngValue]="value" *ngFor="let value of waistData">
+                    {{ value }}
+                  </option>
+                </select>
+                <label>Length:</label>
+                <span id="length_desc" tabindex="0" class="sr-only">please select the length</span>
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="length_desc" [(ngModel)]="lengthValue"
+                  [ngModelOptions]="{standalone: true}" #length>
+                  <option selected="" value=""></option>
+                  <option [ngValue]="value" *ngFor="let value of lengthData">
+                    {{ value }}
+                  </option>
+                </select>
+                <label>Colour:</label>
+                <span id="colour_desc" tabindex="0" class="sr-only">please select the a colour</span>
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="colour_desc" [(ngModel)]="colourValue"
+                  [ngModelOptions]="{standalone: true}" #colour>
+                  <option selected="" value=""></option>
+                  <option [ngValue]="value" *ngFor="let value of colourData">
+                    {{ value }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="addProductItem('5', item.productDescription, item.productPrice, 1, item.productImage)"
+              aria-describedby="addtobag_desc">
+              <span class="glyphicon glyphicon-buy"></span> Add to Bag
+            </button>
+
+            <span id="addtobag_desc" class="hidden" aria-live="assertive">this item has been added to the shopping basket. Use Alt+I to fetch the current contents of the basket.</span>
+          </div>
+        </form>
+        <a routerLink="/" routerLinkActive="active">Store</a>
+      </div>
+      <div class="col-sm-4 bg-light">
+        <section aria-label="Use Alt+I to fetch the contents of the basket" aria-live="assertive">
+          <div *ngIf="this.global.basketCost">
+            <h1>Basket</h1>
+            <ul>
+              <li *ngFor="let item of global.basket">
+                <span>{{ item.productName }} - £{{ item.quantityCost }}</span>
+              </li>
+            </ul>
+            <a routerLink="/basket" routerLinkActive="active">Basket</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

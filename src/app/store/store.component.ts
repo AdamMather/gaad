@@ -23,6 +23,9 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
 
+    // store current url path
+    this.global.path = this.router.url;
+    // fetch product records
     this.global.products = this.route.snapshot.data['products'];
 
   }
