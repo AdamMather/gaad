@@ -14,6 +14,17 @@ app.use(function(req, res, next) {
   next();
 });
 
+// load dependencies here
+const portalRoutes = require('./server/portal/portalRoutes');
+
+// set api routes
+app.use('/api/portal', portalRoutes);
+
+// Catch all other routes and return the index file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 // start server on port 3000
 var server = app.listen(3000, function () {
    var host = server.address().address;
