@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
+Ensure the branch has been switched to `gaad-demo`.
+
 To install, run `npm install` from GitBash command prompt.
 
 Once installation has completed, run `npm start`.
