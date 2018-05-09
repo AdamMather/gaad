@@ -30,17 +30,4 @@ export class StoreComponent implements OnInit {
 
   }
 
-  @HostListener('window:keydown', ['$event'])
-  onKey(event: any): void {
-
-    console.log(event.keyCode);
-    let element = document.getElementById('status');
-
-    //
-    if (event.keyCode == 66 && event.altKey) {
-      console.log('you pressed key combination Alt+B');
-      this.router.navigate(['/basket'], { relativeTo: this.route });
-    }
-  }
-
 }

@@ -25,7 +25,9 @@ export class AppComponent {
     console.log(event.keyCode);
 
     if (event.keyCode == 113) {
+      let btnStickyKeyGlossary = document.getElementById('btnStickyKeyGlossary');
       console.log('you pressed key F2');
+      btnStickyKeyGlossary.click();
     }
 
     //
