@@ -63,7 +63,7 @@
               </div>
               <div class="col-sm-6">
                 <label for="Id">Waist:</label>
-                <span id="waist_desc" tabindex="0" class="sr-only">please select the waist size</span>
+                <span id="waist_desc" class="sr-only">please select the waist size</span>
                 <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="waist_desc" [(ngModel)]="waistValue"
                   [ngModelOptions]="{standalone: true}" #waist>
                   <option selected="" value=""></option>
@@ -71,8 +71,8 @@
                     {{ value }}
                   </option>
                 </select>
-                <label>Length:</label>
-                <span id="length_desc" tabindex="0" class="sr-only">please select the length</span>
+                <label for="Id">Length:</label>
+                <span id="length_desc" class="sr-only">please select the length</span>
                 <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="length_desc" [(ngModel)]="lengthValue"
                   [ngModelOptions]="{standalone: true}" #length>
                   <option selected="" value=""></option>
@@ -80,8 +80,8 @@
                     {{ value }}
                   </option>
                 </select>
-                <label>Colour:</label>
-                <span id="colour_desc" tabindex="0" class="sr-only">please select the a colour</span>
+                <label for="Id">Colour:</label>
+                <span id="colour_desc" class="sr-only">please select the a colour</span>
                 <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="colour_desc" [(ngModel)]="colourValue"
                   [ngModelOptions]="{standalone: true}" #colour>
                   <option selected="" value=""></option>

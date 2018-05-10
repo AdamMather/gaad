@@ -85,7 +85,7 @@
               <td class="invert">
                 <div class="rem">
                   <div class="close1">
-                    <button type="button" class="btn btn-danger" (click)="removeProductItem(item)">
+                    <button type="button" class="btn btn-danger" (click)="removeProductItem(item)" [attr.aria-label]=getProductItemLabel(item.productName)>
                       <span class="glyphicon glyphicon-remove"></span> Remove
                     </button>
                   </div>

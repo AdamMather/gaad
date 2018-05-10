@@ -126,6 +126,11 @@ export class BasketComponent implements OnInit {
     return "basket-item-" + itemId + "-quantity-desc";
   }
 
+  getProductItemLabel(itemName: string): string {
+
+    return "This button will remove the item " + itemName + " and associated quantity";
+  }
+
   getBasketContents(): string {
 
     let stringBuilder: string = '';

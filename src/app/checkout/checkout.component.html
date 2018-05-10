@@ -324,9 +324,31 @@
                     <input type="checkbox" id="bill_saveAddressInfo" name="bill_saveAddressInfo" value="" [(ngModel)]="address.save" #billSaveAddressInfo="ngModel">
                     <label for="billSaveAddressInfo">Save this information for next time</label>
 
-
-                    <button type="submit" class="btn btn-success" aria-disabled="!billingForm.form.valid" [disabled]="!billingForm.form.valid">Submit</button>
                   </fieldset>
+
+                  <div *ngIf="!billingForm.form.pristine && !billingForm.form.valid">
+                    <div *ngIf="billAddrLine1.errors && (billAddrLine1.dirty || billAddrLine1.touched)">
+                      <div id="errMsg_a1Req" [hidden]="!billAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('bill_addrLine1')">The first line of the contact main address is required!</a>
+                      </div>
+                    </div>
+                    <div *ngIf="billCity.errors && (billCity.dirty || billCity.touched)">
+                      <div id="errMsg_ctReq" [hidden]="!billCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('bill_city')">The town or city of the contact main address is required!</a>
+                      </div>
+                    </div>
+                    <div *ngIf="billPostcode.errors && (billPostcode.dirty || billPostcode.touched)">
+                      <div id="errMsg_pcReq" [hidden]="!billPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('bill_postcode')">The postcode of the contact main address is required!</a>
+                      </div>
+                      <div id="errMsg_pcInv" [hidden]="!billPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                        <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button type="submit" class="btn btn-success" aria-disabled="!billingForm.form.valid" [disabled]="!billingForm.form.valid">Submit</button>
+
                 </form>
               </div>
             </div>
