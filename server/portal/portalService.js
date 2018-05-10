@@ -10,7 +10,7 @@ exports.getProducts = (filter) => {
         "productDescription": "1976 501 Jeans",
         "productImage": {
             "src": "http://images.asos-media.com/products/asos-farleigh-high-waist-slim-mom-jeans-in-jacinta-pretty-mid-wash/7948167-1-jacintaprettymid?$XL$",
-            "shortDesc": "high-waist-slim-mom-jeans-in-jacinta",
+            "shortDesc": "high waist slim mom jeans in jacinta",
             "width": 116,
             "height": 148,
         },
@@ -22,7 +22,7 @@ exports.getProducts = (filter) => {
         "productDescription": "501 Original Fit Jeans",
         "productImage": {
             "src": "http://lsco.scene7.com/is/image/lsco/Levi/clothing/005010114-front-pdp.jpg",
-            "shortDesc": "short description here",
+            "shortDesc": "501 Original Fit Jeans",
             "width": 116,
             "height": 148,
         },
@@ -34,7 +34,7 @@ exports.getProducts = (filter) => {
         "productDescription": "501 Bootleg Jeans",
         "productImage": {
             "src": "https://mosaic01.ztat.net/vgs/media/pdp-zoom/LE/22/2G/06/AK/12/LE222G06A-K12@11.jpg",
-            "shortDesc": "short description here",
+            "shortDesc": "501 Bootleg Jeans",
             "width": 116,
             "height": 148,
         },
