@@ -69,13 +69,13 @@
                   <span [id]=createId(item._id) aria-live="assertive" class="hidden">You now have {{item.quantity}} of {{item.productName}} in the basket. The quantity cost for this item is
                     {{item.quantityCost }} pounds.</span>
                   <div class="quantity-select">
-                    <div class="entry value-minus" id="increment-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, false)"
-                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                    <div class="entry value-minus" id="decrement-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, false)"
+                      [attr.aria-label]=decreaseQuantity(item.productName) [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
                     <div class="entry value">
                       <span>{{ item.quantity }}</span>
                     </div>
-                    <div class="entry value-plus active" id="decrement-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, true)"
-                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                    <div class="entry value-plus active" id="increment-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, true)"
+                    [attr.aria-label]=increaseQuantity(item.productName) [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
                   </div>
                 </div>
               </td>
