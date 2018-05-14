@@ -131,6 +131,16 @@ export class BasketComponent implements OnInit {
     return "This button will remove the item " + itemName + " and associated quantity";
   }
 
+  increaseQuantity(itemName: string): string {
+
+    return "click to increase the quantity of item " + itemName + "by 1";
+  }
+
+  decreaseQuantity(itemName: string): string {
+
+    return "click to decrease the quantity of item " + itemName + "by 1";
+  }
+
   getBasketContents(): string {
 
     let stringBuilder: string = '';
@@ -192,11 +202,11 @@ export class BasketComponent implements OnInit {
 
       switch (attId) {
         case 'increment-value': {
-          this.adjustQuantityValue(item, false);
+          this.adjustQuantityValue(item, true);
           break;
         }
         case 'decrement-value': {
-          this.adjustQuantityValue(item, true);
+          this.adjustQuantityValue(item, false);
           break;
         }
       }

@@ -2,20 +2,20 @@
 <!-- Button trigger modal -->
 <button type="button" id="btnStickyKeyGlossary" class="sr-only sr-only-focusable" aria-label="Please press F2 for sticky key glossary"
   data-toggle="modal" data-target="#stickyKeyModal">
-  Sticky Keys
+  Hot Keys
 </button>
-
 <!-- Modal -->
 <div class="modal fade" id="stickyKeyModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">Sticky Keys</h5>
+        <h5 class="modal-title" id="modalLabel">Hot Keys</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" role="alert" aria-live="assertive">
+        <span class="sr-only">The following hot keys are available to navigate this Web site</span>
         <span>
           <strong>Alt+C</strong>&nbsp;&nbsp;&nbsp;Go to the checkout
         </span>
@@ -69,13 +69,13 @@
                   <span [id]=createId(item._id) aria-live="assertive" class="hidden">You now have {{item.quantity}} of {{item.productName}} in the basket. The quantity cost for this item is
                     {{item.quantityCost }} pounds.</span>
                   <div class="quantity-select">
-                    <div class="entry value-minus" id="increment-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, false)"
-                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                    <div class="entry value-minus" id="decrement-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, false)"
+                      [attr.aria-label]=decreaseQuantity(item.productName) [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
                     <div class="entry value">
                       <span>{{ item.quantity }}</span>
                     </div>
-                    <div class="entry value-plus active" id="decrement-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, true)"
-                      [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
+                    <div class="entry value-plus active" id="increment-value" tabindex="0" (keyup)="onKey($event, item)" (click)="adjustQuantityValue(item, true)"
+                    [attr.aria-label]=increaseQuantity(item.productName) [attr.aria-describedby]=createId(item._id)>&nbsp;</div>
                   </div>
                 </div>
               </td>

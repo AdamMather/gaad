@@ -1,45 +1,47 @@
 <a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<!-- Button trigger modal -->
+<button type="button" id="btnStickyKeyGlossary" class="sr-only sr-only-focusable" aria-label="Please press F2 for sticky key glossary"
+  data-toggle="modal" data-target="#stickyKeyModal">
+  Hot Keys
+</button>
+<!-- Modal -->
+<div class="modal fade" id="stickyKeyModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Hot Keys</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" role="alert" aria-live="assertive">
+        <span class="sr-only">
+          The following hot keys are available to navigate this Web site
+        </span>
+        <span>
+          <strong>Alt+B</strong>&nbsp;&nbsp;&nbsp;Go to the basket</span>
+        <br />
+        <span>
+          <strong>Alt+I</strong>&nbsp;&nbsp;&nbsp;Announce the basket items and quantities and total cost
+        </span>
+        <br />
+        <span>
+          <strong>Alt+S</strong>&nbsp;&nbsp;&nbsp;Continue shopping - go to the store homepage
+        </span>
+        <span>
+          <strong>Alt+T</strong>&nbsp;&nbsp;&nbsp;Recall the total cost of the basket
+        </span>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="content" class="container">
   <!-- Content here -->
   <main>
-    <!-- Button trigger modal -->
-    <button type="button" id="btnStickyKeyGlossary" class="sr-only sr-only-focusable" aria-label="Please press F2 for sticky key glossary"
-      data-toggle="modal" data-target="#stickyKeyModal">
-      Sticky Keys
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="stickyKeyModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel">Sticky Keys</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <span>
-              <strong>Alt+B</strong>&nbsp;&nbsp;&nbsp;Go to the basket</span>
-            <br />
-            <span>
-              <strong>Alt+I</strong>&nbsp;&nbsp;&nbsp;Announce the basket items and quantities and total cost
-            </span>
-            <br />
-            <span>
-              <strong>Alt+S</strong>&nbsp;&nbsp;&nbsp;Continue shopping - go to the store homepage
-            </span>
-            <span>
-              <strong>Alt+T</strong>&nbsp;&nbsp;&nbsp;Recall the total cost of the basket
-            </span>
-            <br />
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <span id="status" tabindex="0" class="sr-only sr-only-focusable"></span>
     <div class="bg-primary">
       <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
@@ -93,7 +95,7 @@
             </div>
             <button type="button" class="btn btn-primary" (click)="addProductItem('5', item.productDescription, item.productPrice, 1, item.productImage)"
               aria-describedby="addtobag_desc">
-              <span class="glyphicon glyphicon-buy"></span> Add to Bag
+              <span class="glyphicon glyphicon-buy"></span> Add to Basket
             </button>
 
             <span id="addtobag_desc" class="hidden" aria-live="assertive">this item has been added to the shopping basket. Use Alt+I to fetch the current contents of the basket.</span>
