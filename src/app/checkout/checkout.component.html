@@ -169,20 +169,20 @@
                       </div>
                     </div>
                     <div *ngIf="shipAddrLine1.errors && (shipAddrLine1.dirty || shipAddrLine1.touched)">
-                      <div id="errMsg_a1Req" [hidden]="!shipAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_ship_a1Req" [hidden]="!shipAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('ship_addrLine1')">The first line of the contact main address is required!</a>
                       </div>
                     </div>
                     <div *ngIf="shipCity.errors && (shipCity.dirty || shipCity.touched)">
-                      <div id="errMsg_ctReq" [hidden]="!shipCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_ship_ctReq" [hidden]="!shipCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('ship_city')">The town or city of the contact main address is required!</a>
                       </div>
                     </div>
                     <div *ngIf="shipPostcode.errors && (shipPostcode.dirty || shipPostcode.touched)">
-                      <div id="errMsg_pcReq" [hidden]="!shipPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_ship_pcReq" [hidden]="!shipPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('ship_postcode')">The postcode of the contact main address is required!</a>
                       </div>
-                      <div id="errMsg_pcInv" [hidden]="!shipPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_ship_pcInv" [hidden]="!shipPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
                       </div>
                     </div>
@@ -333,20 +333,20 @@
 
                   <div *ngIf="!billingForm.form.pristine && !billingForm.form.valid">
                     <div *ngIf="billAddrLine1.errors && (billAddrLine1.dirty || billAddrLine1.touched)">
-                      <div id="errMsg_a1Req" [hidden]="!billAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_bill_a1Req" [hidden]="!billAddrLine1.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('bill_addrLine1')">The first line of the contact main address is required!</a>
                       </div>
                     </div>
                     <div *ngIf="billCity.errors && (billCity.dirty || billCity.touched)">
-                      <div id="errMsg_ctReq" [hidden]="!billCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_bill_ctReq" [hidden]="!billCity.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('bill_city')">The town or city of the contact main address is required!</a>
                       </div>
                     </div>
                     <div *ngIf="billPostcode.errors && (billPostcode.dirty || billPostcode.touched)">
-                      <div id="errMsg_pcReq" [hidden]="!billPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_bill_pcReq" [hidden]="!billPostcode.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('bill_postcode')">The postcode of the contact main address is required!</a>
                       </div>
-                      <div id="errMsg_pcInv" [hidden]="!billPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                      <div id="errMsg_bill_pcInv" [hidden]="!billPostcode.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                         <a (click)="getFocus('postcode')">The postcode of the contact main address is invalid!</a>
                       </div>
                     </div>

@@ -190,6 +190,7 @@ export class CheckoutComponent implements OnInit {
       model.expiry = model.expiry + '/';
     }
   }
+
   @HostListener('window:keydown', ['$event'])
   onKey(this: any, event: any): void {
 
@@ -215,15 +216,33 @@ export class CheckoutComponent implements OnInit {
           this.getFocus('lastName');
           break;
         }
-        case 'errMsg_a1Req': {
-          this.getFocus('addrLine1');
+        case 'errMsg_ship_a1Req': {
+          this.getFocus('ship_addrLine1');
           break;
         }
-        case 'errMsg_pcReq':
-        case 'errMsg_pcInv': {
-          this.getFocus('postcode');
+        case 'errMsg_ship_ctReq': {
+          this.getFocus('ship_city');
           break;
         }
+        case 'errMsg_ship_pcReq':
+        case 'errMsg_ship_pcInv': {
+          this.getFocus('ship_postcode');
+          break;
+        }
+        case 'errMsg_bill_a1Req': {
+          this.getFocus('bill_addrLine1');
+          break;
+        }
+        case 'errMsg_bill_ctReq': {
+          this.getFocus('bill_city');
+          break;
+        }
+        case 'errMsg_bill_pcReq':
+        case 'errMsg_pill_pcInv': {
+          this.getFocus('bill_postcode');
+          break;
+        }
+        
         case 'errMsg_cpReq':
         case 'errMsg_cpInv': {
           this.getFocus('contactPoint');
