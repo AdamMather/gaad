@@ -17,9 +17,16 @@ import { Payment } from './../core/payment.model';
 })
 export class CheckoutComponent implements OnInit {
 
+  //models
   public address: Address;
   public contact: Contact;
   public payment: Payment;
+
+  // form statuses
+  public submitContact : boolean;
+  public submitShipping : boolean;
+  public submitPayment : boolean;
+  public submitBilling : boolean;
 
   //
   public addressControl: FormControl;
@@ -46,6 +53,12 @@ export class CheckoutComponent implements OnInit {
     this.contact = new Contact({});
     //
     this.payment = new Payment({});
+
+    // initialize form submission statuses
+    this.submitContact = false;
+    this.submitShipping = false;
+    this.submitPayment = false;
+    this.submitBilling = false;
 
     //create addressControl FormControl
     this.addressControl = new FormControl();
@@ -139,7 +152,30 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(form: NgForm, name?: string): void {
+
+    if (name) {
+      switch (name) {
+        case 'contact': {
+          this.submitContact = true;
+          break;
+        }
+        case 'shipping': {
+          this.submitShipping = true;
+          break;
+        }
+        case 'payment': {
+          this.submitPayment = true;
+          break;
+        }
+        case 'billing': {
+          this.submitBilling = true;
+          break;
+        }
+      }
+    }
+
+    console.log('submitContact: ' + this.submitContact + '\nsubmitShipping: ' + this.submitShipping  + '\nsubmitPayment: ' + this.submitPayment + '\nsubmitBilling: ' + this.submitBilling + '\n');
 
     //
     form.reset();

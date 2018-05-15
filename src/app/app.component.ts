@@ -22,10 +22,12 @@ export class AppComponent {
 
     let element = document.getElementById('status');
     //
+    this.global.showModal = false;
     console.log(event.keyCode);
 
     if (event.keyCode == 113) {
       let btnStickyKeyGlossary = document.getElementById('btnStickyKeyGlossary');
+      this.global.showModal = true;
       console.log('you pressed key F2');
       btnStickyKeyGlossary.click();
     }

@@ -7,6 +7,7 @@ import { ProductItem } from './productItem.model';
 export class Global {
 
     public path: string;                // breadcrumb navigation
+    public showModal: boolean;
 
     public products: Array<Products>;   // product range
     public productItem: ProductItem;    // basket item
@@ -21,7 +22,12 @@ export class Global {
 
     constructor() {
         //
+        this.showModal = false;
         this.shippingCost = 3;
+    }
+
+    modalStatus(): boolean {
+      return this.showModal;
     }
 
     getBasketContents(): string {
@@ -63,5 +69,4 @@ export class Global {
         }
         return stringBuilder;
       }
-
 }
