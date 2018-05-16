@@ -12,6 +12,7 @@ import { ProductComponent } from './product/product.component';
 import { BasketComponent } from './basket/basket.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { SummaryComponent } from './summary/summary.component';
 
 // Core Model
 import { Global } from './core/global.model';
@@ -35,7 +36,8 @@ const googleMapsParams = {
     ProductComponent,
     BasketComponent,
     ConfirmationComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    SummaryComponent
   ],
   imports: [
     AgmCoreModule.forRoot(googleMapsParams),

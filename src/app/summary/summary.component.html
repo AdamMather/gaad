@@ -1,0 +1,89 @@
+<a href="{{global.path}}#content" role="link" class="sr-only sr-only-focusable">Skip to content</a>
+<!-- Button trigger modal -->
+<button type="button" id="btnStickyKeyGlossary" class="sr-only sr-only-focusable" aria-label="Please press F2 for sticky key glossary"
+  data-toggle="modal" data-target="#stickyKeyModal">
+  Hot Keys
+</button>
+<!-- Modal -->
+<div class="modal fade" id="stickyKeyModal" tabindex="-1" role="dialog" [attr.data-backdrop]=global.modalStatus() aria-labelledby="modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel">Hot Keys</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" role="alert" aria-live="assertive">
+        <span class="sr-only">
+          The following hot keys are available to navigate this Web site
+        </span>
+        <span>
+          <strong>Alt+B</strong>&nbsp;&nbsp;&nbsp;Go to the basket</span>
+        <br />
+        <span>
+          <strong>Alt+I</strong>&nbsp;&nbsp;&nbsp;Announce the basket items and quantities and total cost
+        </span>
+        <br />
+        <span>
+          <strong>Alt+S</strong>&nbsp;&nbsp;&nbsp;Continue shopping - go to the store homepage
+        </span>
+        <span>
+          <strong>Alt+T</strong>&nbsp;&nbsp;&nbsp;Recall the total cost of the basket
+        </span>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="content" class="container">
+  <!-- Content here -->
+  <main>
+    <div class="bg-primary">
+      <h1 class="display-1 small text-white">Accessibility Checkout Demo</h1>
+      <h2 class="display-2 small text-white">ATOS DEUX</h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-8" role="alert" aria-live="assertive">
+        <p class="text-left">
+          Please confirm the details you have provided to process this order.
+        </p>
+        <p class="text-left">
+          Here are your shipping details:-
+          <br />
+          <span *ngIf="global.shipping.addrLine1">{{ global.shipping.addrLine1 }},</span>
+          <span *ngIf="global.shipping.addrLine2">{{ global.shipping.addrLine2 }},</span>
+          <span *ngIf="global.shipping.city">{{ global.shipping.city }},</span>
+          <span *ngIf="global.shipping.postcode">{{ global.shipping.postcode }}</span>
+        </p>
+        <p class="text-left">
+          Here are your billing details:-
+          <br />
+          <span *ngIf="global.billing.addrLine1">{{ global.billing.addrLine1 }},</span>
+          <span *ngIf="global.billing.addrLine2">{{ global.billing.addrLine2 }},</span>
+          <span *ngIf="global.billing.city">{{ global.billing.city }},</span>
+          <span *ngIf="global.billing.postcode">{{ global.billing.postcode }}</span>
+        </p>
+        <p class="text-left">Please click confirm to proceed with your order.</p>
+        <button class="btn btn-link" routerLink="/confirmation" routerLinkActive="active">Confirmation</button>
+      </div>
+      <div class="col-sm-4 bg-light">
+        <section aria-label="Use Alt+I to fetch the contents of the basket" aria-live="assertive">
+          <div *ngIf="this.global.basketCost">
+            <h1>Basket</h1>
+            <ul>
+              <li *ngFor="let item of global.basket">
+                <span>{{ item.productName }} - £{{ item.quantityCost }}</span>
+              </li>
+            </ul>
+            <a routerLink="/basket" routerLinkActive="active">Basket</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>

@@ -7,6 +7,7 @@ import { StoreComponent } from './../store/store.component';
 import { ProductComponent } from './../product/product.component';
 import { BasketComponent } from './../basket/basket.component';
 import { CheckoutComponent } from './../checkout/checkout.component';
+import { SummaryComponent } from './../summary/summary.component';
 import { ConfirmationComponent } from './../confirmation/confirmation.component';
 
 // Resolve
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductComponent, resolve: { products: ProductsResolve } },
   { path: 'basket', component: BasketComponent, resolve: { products: ProductsResolve } },
   { path: 'checkout', component: CheckoutComponent, resolve: { products: ProductsResolve } },
+  { path: 'summary', component: SummaryComponent, resolve: { products: ProductsResolve } },
   { path: 'confirmation', component: ConfirmationComponent, resolve: { products: ProductsResolve } }
 ];
 
