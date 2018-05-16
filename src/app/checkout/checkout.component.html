@@ -49,9 +49,12 @@
     </div>
     <div class="row">
       <div class="col-sm-8">
-
         <div id="accordion" class="accordion">
           <div class="card mb-0">
+            <span class="sr-only sr-only-focusable">
+              <p>Please navigate the following links using the tab key and press enter to expand the form section. you will
+                need to tab once again to focus on the first form element</p>
+            </span>
             <button class="btn btn-link card-title" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" role="button"
               aria-expanded="false" aria-controls="collapseOne">
               Contact
@@ -68,7 +71,7 @@
                     <span id="contactPoint_desc" class="hidden" aria-live="assertive">Example email address would be contact@domain.com</span>
 
                     <input type="checkbox" id="newsAndOffers" name="newsAndOffers" value="" [(ngModel)]="contact.newsAndOffers" #newsAndOffers="ngModel">
-                    <label for="newsAndOffers">Keep me up to date on news and exclusive offers</label>
+                    <label for="newsAndOffers" aria-label="Keep me up to date on news and exclusive offers">Keep me up to date on news and exclusive offers</label>
 
                   </fieldset>
 
@@ -83,7 +86,7 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="btn btn-success" aria-disabled="!contactForm.form.valid" [disabled]="!contactForm.form.valid">Submit</button>
+                  <button type="submit" class="btn btn-success" [disabled]="!contactForm.form.valid">Submit</button>
                 </form>
               </div>
             </div>
@@ -200,8 +203,8 @@
               <div class="card-body">
                 <form #paymentForm="ngForm" (ngSubmit)="onSubmit(paymentForm, 'payment')" novalidate>
                   <fieldset class="form-group">
-                    <button class="btn btn-link card-title" data-toggle="collapse" href="#collapseCardDetail" role="button"
-                      aria-expanded="false" aria-controls="collapseCardDetail">
+                    <button class="btn btn-link card-title" data-toggle="collapse" href="#collapseCardDetail" role="button" aria-expanded="false"
+                      aria-controls="collapseCardDetail">
                       Credit Card
                     </button>
                     <div id="collapseCardDetail" class="collapse">
@@ -243,35 +246,35 @@
                           <div id="errMsg_cnInv" [hidden]="!cardnumber.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
                             <a (click)="getFocus('cardnumber')">The bank card number is invalid!</a>
                           </div>
+                        </div>
 
-                          <div *ngIf="cardholdername.errors && (cardholdername.dirty || cardholdername.touched)">
-                            <div id="errMsg_rnReq" [hidden]="!cardholdername.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('cardholdername')">The registered cardholder name is required!</a>
-                            </div>
-                            <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('cardholdername')">The registered cardholder name must be at least 3 characters long.</a>
-                            </div>
-                            <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('cardholdername')">The registered cardholder name cannot be more than 30 characters long.</a>
-                            </div>
+                        <div *ngIf="cardholdername.errors && (cardholdername.dirty || cardholdername.touched)">
+                          <div id="errMsg_rnReq" [hidden]="!cardholdername.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('cardholdername')">The registered cardholder name is required!</a>
                           </div>
-
-                          <div *ngIf="expiry.errors && (expiry.dirty || expiry.touched)">
-                            <div id="errMsg_expReq" [hidden]="!expiry.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('expiry')">The bank card expiry date is required!</a>
-                            </div>
-                            <div id="errMsg_expInv" [hidden]="!expiry.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('expiry')">The bank card expiry date is invalid!</a>
-                            </div>
+                          <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.minlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('cardholdername')">The registered cardholder name must be at least 3 characters long.</a>
                           </div>
+                          <div id="errMsg_rnMinLgt" [hidden]="!cardholdername.errors.maxlength" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('cardholdername')">The registered cardholder name cannot be more than 30 characters long.</a>
+                          </div>
+                        </div>
 
-                          <div *ngIf="cvv.errors && (cvv.dirty || cvv.touched)">
-                            <div id="errMsg_cvvReq" [hidden]="!cvv.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('cvv')">The bank card expiry cvv number is required!</a>
-                            </div>
-                            <div id="errMsg_cvvInv" [hidden]="!cvv.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
-                              <a (click)="getFocus('cvv')">The bank card expiry cvv number is invalid!</a>
-                            </div>
+                        <div *ngIf="expiry.errors && (expiry.dirty || expiry.touched)">
+                          <div id="errMsg_expReq" [hidden]="!expiry.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('expiry')">The bank card expiry date is required!</a>
+                          </div>
+                          <div id="errMsg_expInv" [hidden]="!expiry.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('expiry')">The bank card expiry date is invalid!</a>
+                          </div>
+                        </div>
+
+                        <div *ngIf="cvv.errors && (cvv.dirty || cvv.touched)">
+                          <div id="errMsg_cvvReq" [hidden]="!cvv.errors.required" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('cvv')">The bank card expiry cvv number is required!</a>
+                          </div>
+                          <div id="errMsg_cvvInv" [hidden]="!cvv.errors.pattern" role="alert" tabindex="0" (keyup)="onKey($event)" class="alert alert-danger">
+                            <a (click)="getFocus('cvv')">The bank card expiry cvv number is invalid!</a>
                           </div>
                         </div>
                       </div>
@@ -361,8 +364,7 @@
           </div>
         </div>
 
-
-        <button class="btn btn-link" routerLink="/confirmation" routerLinkActive="active" [disabled]="!submitBilling">Confirmation</button>
+        <button class="btn btn-link" routerLink="/summary" routerLinkActive="active" [disabled]="!submitBilling">Proceed</button>
       </div>
       <div class="col-sm-4 bg-light">
         <section aria-label="Use Alt+I to fetch the contents of the basket">

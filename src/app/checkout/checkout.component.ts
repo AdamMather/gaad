@@ -248,6 +248,18 @@ export class CheckoutComponent implements OnInit {
           this.getFocus('contactPoint');
           break;
         }
+        case 'errMsg_cnReq':
+        case 'errMsg_cnInv': {
+          this.getFocus('cardnumber');
+          break;
+        }
+        case 'errMsg_rnReq':
+        case 'errMsg_rnMinLgt':
+        case 'errMsg_rnMaxLgt': {
+          this.getFocus('cardholdername');
+          break;
+        }
+
         case 'errMsg_expReq':
         case 'errMsg_expInv': {
           this.getFocus('expiry');

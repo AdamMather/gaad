@@ -48,15 +48,24 @@
     </div>
     <div class="row">
       <div class="col-sm-8" role="alert" aria-live="assertive">
-        <p class="display-3_">
-          Hello {{ global.shipping.firstName }},
-          <br /> Your payment has gone through successfully and your order is being processed.
+        <p class="text-left">
+          Hello {{ global.shipping.firstName }},<br />
+          Your payment has gone through successfully and your order is being processed.
         </p>
-        <p class="display-3_">
-          Here are your shipping details:-
-          <br /> {{ global.shipping.addrLine1 }}, {{ global.shipping.addrLine2 }}, {{ global.shipping.city }}, {{ global.shipping.postcode
-          }}
+        <p class="text-left">
+          Your order will be shipped to the following address:-<br />
+          <span *ngIf="global.shipping.addrLine1">{{ global.shipping.addrLine1 }},</span>
+          <span *ngIf="global.shipping.addrLine2">{{ global.shipping.addrLine2 }},</span>
+          <span *ngIf="global.shipping.city">{{ global.shipping.city }},</span>
+          <span *ngIf="global.shipping.postcode">{{ global.shipping.postcode }}</span>  
         </p>
+        <p class="text-left">
+            Your order will be billed to the following address:-<br />
+            <span *ngIf="global.billing.addrLine1">{{ global.billing.addrLine1 }},</span>
+            <span *ngIf="global.billing.addrLine2">{{ global.billing.addrLine2 }},</span>
+            <span *ngIf="global.billing.city">{{ global.billing.city }},</span>
+            <span *ngIf="global.billing.postcode">{{ global.billing.postcode }}</span>  
+          </p>
       </div>
       <div class="col-sm-4 bg-light">&nbsp;</div>
     </div>
