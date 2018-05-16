@@ -65,8 +65,7 @@
               </div>
               <div class="col-sm-6">
                 <label for="Id">Waist:</label>
-                <span id="waist_desc" class="sr-only">please select the waist size</span>
-                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="waist_desc" [(ngModel)]="waistValue"
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-label="please select the jean waist size" [(ngModel)]="waistValue"
                   [ngModelOptions]="{standalone: true}" #waist>
                   <option selected="" value=""></option>
                   <option [ngValue]="value" *ngFor="let value of waistData">
@@ -74,8 +73,7 @@
                   </option>
                 </select>
                 <label for="Id">Length:</label>
-                <span id="length_desc" class="sr-only">please select the length</span>
-                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="length_desc" [(ngModel)]="lengthValue"
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-label="please select the jean length" [(ngModel)]="lengthValue"
                   [ngModelOptions]="{standalone: true}" #length>
                   <option selected="" value=""></option>
                   <option [ngValue]="value" *ngFor="let value of lengthData">
@@ -83,8 +81,7 @@
                   </option>
                 </select>
                 <label for="Id">Colour:</label>
-                <span id="colour_desc" class="sr-only">please select the a colour</span>
-                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-describedby="colour_desc" [(ngModel)]="colourValue"
+                <select id="Id" #Id="ngModel" class="hideLabel form-control custom-select" aria-label="please select the jean colour" [(ngModel)]="colourValue"
                   [ngModelOptions]="{standalone: true}" #colour>
                   <option selected="" value=""></option>
                   <option [ngValue]="value" *ngFor="let value of colourData">
