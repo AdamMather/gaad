@@ -45,9 +45,9 @@ export class BasketComponent implements OnInit {
       image.height = 50;
 
       // create some static data
-      this.addProductItem("1", "1976 501 Jeans", 180, 3, image);
-      this.addProductItem("2", "501 Original Fit Jeans", 65, 2, image);
-      this.addProductItem("3", "501 Skinny Jeans", 85, 4, image);
+      this.addProductItem("1", "High Rise Jeans", 180, 3, image);
+      this.addProductItem("2", "Relaxed Cut Jeans", 65, 2, image);
+      this.addProductItem("3", "Bootleg Jeans", 85, 4, image);
 
       // calculate total cost of items
       this.global.basket.map(item => this.global.basketCost = this.global.basketCost + item.quantityCost);
@@ -133,12 +133,12 @@ export class BasketComponent implements OnInit {
 
   increaseQuantity(itemName: string): string {
 
-    return "click to increase the quantity of item " + itemName + "by 1";
+    return "click to increase the quantity of item " + itemName + "bye one";
   }
 
   decreaseQuantity(itemName: string): string {
 
-    return "click to decrease the quantity of item " + itemName + "by 1";
+    return "click to decrease the quantity of item " + itemName + "bye one";
   }
 
   getBasketContents(): string {

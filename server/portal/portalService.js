@@ -6,8 +6,8 @@ exports.getProducts = (filter) => {
 
     jsondata = [{
         "_id": 1,
-        "productName": "high-waist-slim-mom-jeans-in-jacinta",
-        "productDescription": "1976 501 Jeans",
+        "productName": "High Rise Jeans",
+        "productDescription": "High Rise Jeans",
         "productImage": {
             "src": "http://images.asos-media.com/products/asos-farleigh-high-waist-slim-mom-jeans-in-jacinta-pretty-mid-wash/7948167-1-jacintaprettymid?$XL$",
             "shortDesc": "high waist slim mom jeans in jacinta",
@@ -18,11 +18,11 @@ exports.getProducts = (filter) => {
     },
     {
         "_id": 2,
-        "productName": "Man Levi",
-        "productDescription": "501 Original Fit Jeans",
+        "productName": "Relaxed Cut Jeans",
+        "productDescription": "Relaxed Cut Jeans",
         "productImage": {
             "src": "http://lsco.scene7.com/is/image/lsco/Levi/clothing/005010114-front-pdp.jpg",
-            "shortDesc": "501 Original Fit Jeans",
+            "shortDesc": "Relaxed Cut Jeans",
             "width": 116,
             "height": 148,
         },
@@ -31,10 +31,10 @@ exports.getProducts = (filter) => {
     {
         "_id": 3,
         "productName": "Bootleg Jeans",
-        "productDescription": "501 Bootleg Jeans",
+        "productDescription": "Bootleg Jeans",
         "productImage": {
             "src": "https://mosaic01.ztat.net/vgs/media/pdp-zoom/LE/22/2G/06/AK/12/LE222G06A-K12@11.jpg",
-            "shortDesc": "501 Bootleg Jeans",
+            "shortDesc": "Bootleg Jeans",
             "width": 116,
             "height": 148,
         },
