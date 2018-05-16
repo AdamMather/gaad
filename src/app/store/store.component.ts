@@ -32,7 +32,7 @@ export class StoreComponent implements OnInit {
 
   getProductDescriptionLabel(itemDescription: string): string {
     
-    return "This button will open the product page for " + itemDescription;
+    return "This button will open the product page for " + itemDescription.replace("501", "5o1");
   }
 
 }
